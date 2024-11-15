@@ -1,5 +1,5 @@
 export default class Airport {
-    constructor(name = '', code = '') {
+    constructor(name = "", code = "") {
         this.name = name;
         this.code = code;
     }
@@ -13,8 +13,8 @@ export default class Airport {
     }
 
     set name(value) {
-        if (typeof value !== 'string') {
-            throw new TypeError('name must be a string');
+        if (typeof value !== "string") {
+            throw new TypeError("name must be a string");
         }
         this._name = value;
     }
@@ -24,8 +24,8 @@ export default class Airport {
     }
 
     set code(value) {
-        if (typeof value !== 'string') {
-            throw new TypeError('code must be a string');
+        if (typeof value !== "string") {
+            throw new TypeError("code must be a string");
         }
         this._code = value;
     }

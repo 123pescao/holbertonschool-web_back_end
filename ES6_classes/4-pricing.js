@@ -1,13 +1,13 @@
-import Currency from './3-currency';
+import Currency from "./3-currency";
 
 export default class Pricing {
     constructor(amount, currency) {
         // Validate types during object creation
-        if (typeof amount !== 'number') {
-            throw new TypeError('Amount must be a number');
+        if (typeof amount !== "number") {
+            throw new TypeError("Amount must be a number");
         }
         if (!(currency instanceof Currency)) {
-            throw new TypeError('Currency must be an instance of Currency');
+            throw new TypeError("Currency must be an instance of Currency");
         }
 
         // Initialize attributes
@@ -21,8 +21,8 @@ export default class Pricing {
     }
 
     set amount(value) {
-        if (typeof value !== 'number') {
-            throw new TypeError('Amount must be a number');
+        if (typeof value !== "number") {
+            throw new TypeError("Amount must be a number");
         }
         this._amount = value;
     }
@@ -34,21 +34,23 @@ export default class Pricing {
 
     set currency(value) {
         if (!(value instanceof Currency)) {
-            throw new TypeError('Currency must be an instance of Currency');
-    }
-    this._currency = value;
+            throw new TypeError("Currency must be an instance of Currency");
+        }
+        this._currency = value;
     }
 
     // Method to display full price
     displayFullPrice() {
-        return `${this._amount} ${this._currency.name} (${this._currency.code})`;
+        return `${this._amount} ${this._currency.name} ` +
+        `(${this._currency.code})`;
     }
 
     // Static method to convert price
     static convertPrice(amount, conversionRate) {
-        if (typeof amount !== 'number' || typeof conversionRate !== 'number') {
-            throw new TypeError('Both amount and conversion rate must be numbers');
+        if (typeof amount !== "number" || typeof conversionRate !== "number") {
+            throw new TypeError("Amount and conversion rate must be numbers");
         }
+
         return amount * conversionRate;
     }
 }
