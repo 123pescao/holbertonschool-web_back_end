@@ -1,21 +1,46 @@
-import ClassRoom from "./0-classroom";
+export default class HolbertonCourse {
+  constructor(name = '', length = 0, students = []) {
+    this.name = name;
+    this.length = length;
+    this.students = students;
+  }
 
-/**
- * Initializes an array of ClassRoom objects with specific capacities.
- * @returns {ClassRoom[]} Array of ClassRoom objects.
- */
-const initializeRooms = () => {
-    const ROOM_CAPACITY_LARGE = 34,
-        ROOM_CAPACITY_MEDIUM = 20,
-        ROOM_CAPACITY_SMALL = 19,
+  get name() {
+    return this._name;
+  }
 
-        rooms = [
-            new ClassRoom(ROOM_CAPACITY_SMALL),
-            new ClassRoom(ROOM_CAPACITY_MEDIUM),
-            new ClassRoom(ROOM_CAPACITY_LARGE)
-        ];
+  set name(value) {
+    if (typeof value !== 'string') {
+      throw new TypeError('Name must be a string');
+    }
+    this._name = value;
+  }
 
-    return rooms;
-};
+  get length() {
+    return this._length;
+  }
 
-export default initializeRooms;
+  set length(value) {
+    if (typeof value !== 'number') {
+      throw TypeError('Length must be a number');
+    }
+    this._length = value;
+  }
+
+  get students() {
+    return this._students;
+  }
+
+  set students(currStudents) {
+    if (typeof currStudents === 'object') {
+      for (const student in currStudents) {
+        if (typeof student !== 'string') {
+          throw new TypeError('Students must be an array of strings');
+        }
+      }
+    } else {
+      throw new TypeError('Students must be an array of strings');
+    }
+    this._students = currStudents;
+  }
+}
