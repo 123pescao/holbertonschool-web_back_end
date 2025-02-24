@@ -4,6 +4,7 @@ import csv
 import math
 from typing import List, Tuple, Dict
 
+
 class Server:
     """Server class to paginate a database of popular baby names.
     """
@@ -21,7 +22,6 @@ class Server:
                 dataset = [row for row in reader]
             self.__dataset = dataset[1:]
         return self.__dataset
-
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         """this function gets the page"""
@@ -42,7 +42,6 @@ class Server:
         end_index = start_index + page_size
         return (start_index, end_index)
 
-
     def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict:
         """This function returns a dict with info of the page"""
         # Validate the input
@@ -55,7 +54,8 @@ class Server:
 
         # Calculate total pages
         total_items = len(self.dataset())
-        total_pages = math.ceil(total_items / page_size) if page_size > 0 else 0
+        total_pages = math.ceil(
+            total_items / page_size) if page_size > 0 else 0
 
         # Determine the next and previous page numbers
         next_page = page + 1 if page < total_pages else None
